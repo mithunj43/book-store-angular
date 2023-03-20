@@ -1,1 +1,15 @@
+<!-- Without RouterLink -->
+<!-- <div>
+    <a href="/about-us">About Us</a>
+    <a href="/how-it-works">How it works</a>
+    <a href="/auth/login">Login</a>
+</div> -->
+
+<div>
+    <a routerLink="/about-us">About Us</a>
+    <a routerLink="/how-it-works">How it works</a>
+    <a routerLink="/auth/login">Login</a>
+    <a routerLink="/public/all-books">All Books</a>
+    <a [routerLink]="['/public/book-details','10','author','20']">Book Details from app</a>
+</div>
 <router-outlet></router-outlet>

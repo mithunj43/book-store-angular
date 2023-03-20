@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class PublicComponent {
 
+  bookId:number =21;
+  authorId:number=25;
 }
