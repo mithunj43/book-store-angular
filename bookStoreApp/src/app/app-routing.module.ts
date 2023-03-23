@@ -5,6 +5,7 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
+  { path: '', redirectTo:'about-us', pathMatch:'full' },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'how-it-works', component: HowItWorksComponent },
   { path: '**', component: NotFoundComponent }
