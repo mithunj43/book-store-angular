@@ -9,21 +9,21 @@ import { ActivatedRoute } from '@angular/router';
 export class BookDetailsComponent implements OnInit {
 
   public id: number = 0;
-  public authorId: number = 0;
-  public name: string = '';
+  // public authorId: number = 0;
+  // public name: string = '';
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(param => {
       this.id = param['id'];
-      this.authorId = param['authorId'];
+     // this.authorId = param['authorId'];
     });
 
 
-    this.route.queryParams.subscribe(queryparam => {
-      this.name = queryparam['name'];
-    });
+    // this.route.queryParams.subscribe(queryparam => {
+    //   this.name = queryparam['name'];
+    // });
   }
 
 }

@@ -9,24 +9,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  public name: string = '';
-  public lastName: string = '';
+  // public name: string = '';
+  // public lastName: string = '';
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(queryparam => {
-      this.name = queryparam['name'];
-      this.lastName = queryparam['lastname'];
-      console.log(queryparam);
-    });
+    // this.route.queryParams.subscribe(queryparam => {
+    //   this.name = queryparam['name'];
+    //   this.lastName = queryparam['lastname'];
+    //   console.log(queryparam);
+    // });
   }
 
-  goToSignup():void{
-    this.router.navigate(['/auth/signup']);
-  }
+  // goToSignup():void{
+  //   this.router.navigate(['/auth/signup']);
+  // }
 
-  goToBookDetails(id:number, authorId:number):void{
-    this.router.navigate(['/public/book-details',id,'author',authorId],
-    {queryParams:{name:'Pooja Mithun', email:'poo'}});
-  }
+  // goToBookDetails(id:number, authorId:number):void{
+  //   this.router.navigate(['/public/book-details',id,'author',authorId],
+  //   {queryParams:{name:'Pooja Mithun', email:'poo'}});
+  // }
 }
