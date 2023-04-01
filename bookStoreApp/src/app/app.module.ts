@@ -25,7 +25,7 @@ import { TestService } from './shared/services/test.service';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [{ provide: CounterService, useClass: Counter2Service },TestService],
+  providers: [{ provide: CounterService, useExisting: Counter2Service },Counter2Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

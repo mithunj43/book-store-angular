@@ -3,18 +3,20 @@ import { CounterService } from './counter.service';
 import { TestService } from './test.service';
 
 @Injectable(
-
+  // {
+  //   "providedIn": "root"
+  // }
 )
-export class Counter2Service extends CounterService{
+export class Counter2Service {
 
-  public override counter: number = 0;
-  constructor(public _testService:TestService) { super();}
+  public counter: number = 0;
+  constructor(public _testService: TestService) { }
 
-  public override incCounter(): void {
-    this.counter+=2;
+  public incCounter(): void {
+    this.counter += 2;
   }
 
-  public override decCounter(): void {
-    this.counter-=2;
+  public decCounter(): void {
+    this.counter -= 2;
   }
 }
