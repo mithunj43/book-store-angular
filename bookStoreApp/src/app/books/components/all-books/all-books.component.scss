@@ -1,14 +1,19 @@
-.example-card {
-    max-width: 400px;
-  }
+.book-card {
+  max-width: 350px;
+  margin: 5px;
+}
 
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+.example-header-image {
+  background-image: url('https://media.licdn.com/dms/image/C5603AQGRj4sy7V5bvQ/profile-displayphoto-shrink_800_800/0/1651861478168?e=2147483647&v=beta&t=67kThhx3f1NVZx71I3APelowlZ4Y217P04rmm8YxZtw');
+  background-size: cover;
+}
 
-  .container{
-      padding: 10px;
-      display: flex;
-      flex-direction: row;
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .container>* {
+    flex: 1 1 350px;
   }
