@@ -3,9 +3,9 @@ import { CounterService } from './counter.service';
 import { TestService } from './test.service';
 
 @Injectable(
-  // {
-  //   "providedIn": "root"
-  // }
+  {
+    "providedIn": "root"
+  }
 )
 export class Counter2Service {
 
