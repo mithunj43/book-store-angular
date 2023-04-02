@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CounterService } from 'src/app/shared/services/counter.service';
 
 @Component({
@@ -6,19 +6,22 @@ import { CounterService } from 'src/app/shared/services/counter.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
 
-  constructor(public _counterService:CounterService){}
+  constructor(public _counterService: CounterService,
+    //@Inject('appTitle') public title: string
+    @Inject('appTitle') public config: any
+  ) { }
 
   ngOnInit(): void {
 
   }
 
-  public increase():void{
+  public increase(): void {
     this._counterService.incCounter();
   }
 
-  public decrease():void{
+  public decrease(): void {
     this._counterService.decCounter();
   }
 }
