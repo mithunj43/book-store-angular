@@ -10,7 +10,7 @@ import { TestService } from './test.service';
 export class Counter2Service {
 
   public counter: number = 0;
-  constructor(public _testService: TestService) { }
+  constructor() { }
 
   public incCounter(): void {
     this.counter += 2;

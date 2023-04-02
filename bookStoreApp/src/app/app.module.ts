@@ -11,6 +11,7 @@ import { HomeComponent } from './public-components/home/home.component';
 import { CounterService } from './shared/services/counter.service';
 import { Counter2Service } from './shared/services/counter2.service';
 import { TestService } from './shared/services/test.service';
+import { counterFactory } from './shared/services/counter.factory';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TestService } from './shared/services/test.service';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [{ provide: CounterService, useExisting: Counter2Service }, Counter2Service,
+  providers: [counterFactory,
+    TestService,
   //{provide:'appTitle',useValue:'this is the title of app'}
   { provide: 'appTitle', useValue: { title: 'this is the title', description: 'this is the title description' } }
   ],

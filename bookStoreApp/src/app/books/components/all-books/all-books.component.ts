@@ -13,7 +13,7 @@ export class AllBooksComponent implements OnInit {
 
   public books: BookModel[] = [];
 
-  constructor(public bookService: BookService, public _counterService: Counter2Service) { 
+  constructor(public bookService: BookService, public _counterService: CounterService) { 
 
   }
 
