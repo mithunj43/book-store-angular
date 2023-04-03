@@ -7,4 +7,4 @@
 <p>title == {{config.title}}, Description == {{config.description}}</p>
 
 <h2>Our authors</h2>
-<app-authors></app-authors>
+<app-authors [data]="_counterService.counter" [showAuthors]="_counterService.counter>4"></app-authors>

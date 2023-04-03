@@ -1,29 +1,8 @@
 <h2> {{pageTitle}}</h2>
+<a [routerLink]="'recent'">Recent Books</a><br>
 
 <button (click)="increase()">Counter ++ </button>
 <button (click)="decrease()">Counter -- </button>
 <p>Counter == {{_counterService.counter}}</p>
 
-<div class="container">
-    <mat-card class="book-card" *ngFor="let book of books;even as e">
-        <mat-card-header>
-            <mat-card-title>{{book.title}}</mat-card-title>
-        </mat-card-header>
-            <img mat-card-image
-                src="https://media.licdn.com/dms/image/C5603AQGRj4sy7V5bvQ/profile-displayphoto-shrink_800_800/0/1651861478168?e=2147483647&v=beta&t=67kThhx3f1NVZx71I3APelowlZ4Y217P04rmm8YxZtw"
-                alt="Photo of a Mithun">
-        <mat-card-content>
-            <p>
-               {{book.author}}
-            </p>
-            <p> totalPages: {{book.totalPages}}</p>
-            <p>
-                Price: {{book.price.value + ' '+ book.price.currency}}
-            </p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button>Details</button>
-            <button mat-button>SHARE</button>
-        </mat-card-actions>
-    </mat-card>
-</div>
+<app-book-card [allBooks]="books"></app-book-card>
