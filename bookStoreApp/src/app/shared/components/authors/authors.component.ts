@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-authors',
@@ -7,7 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AuthorsComponent implements OnInit{
 
-  @Input() data:number;
+  @Input() 
+  get data(){
+    return this._data
+  }
+  set data(value:number)
+  {
+    this._data = ++value;
+  }
+
+  private _data:number;
   @Input() showAuthors:boolean;
   constructor(){}
 
