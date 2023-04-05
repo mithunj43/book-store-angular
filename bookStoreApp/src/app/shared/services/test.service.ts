@@ -11,5 +11,6 @@ export class TestService {
   constructor() { }
 
   public status: boolean = false;
+  public myData : string;
 
 }
