@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { __values } from 'tslib';
 
 @Component({
@@ -8,7 +8,7 @@ import { __values } from 'tslib';
 })
 export class AuthorsComponent implements OnInit{
 
-
+  @Output() myData = new EventEmitter<string>();
   public data:number;
 
   public setData(value:number):void{
@@ -18,6 +18,10 @@ export class AuthorsComponent implements OnInit{
   constructor(){}
 
   ngOnInit(): void {
+  }
+
+  public btnClick():void{
+    this.myData.emit('This data is from my child - Mithun Pooja')
   }
 
 }

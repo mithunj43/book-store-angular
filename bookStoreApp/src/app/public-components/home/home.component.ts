@@ -8,35 +8,15 @@ import { CounterService } from 'src/app/shared/services/counter.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit{
 
-  @ViewChild('authors') private childAuthor : AuthorsComponent;
-  @ViewChild('decButton') private decButton : MatButton;
-  @ViewChild('title') private title: ElementRef;
-
-  constructor(public _counterService: CounterService,
-    //@Inject('appTitle') public title: string
-    @Inject('appTitle') public config: any
-  ) { }
-  ngAfterViewInit(): void {
-   setTimeout(() => {
-    this.childAuthor.setData(2125);
-    this.decButton.color ='primary';
-    this.decButton.disabled = true;
-    this.title.nativeElement.innerHTML = 'This is updated title';
-    console.log(this.title.nativeElement);
-   }, 0);
-  }
+  constructor() { }
 
   ngOnInit(): void {
 
   }
 
-  public increase(): void {
-    this._counterService.incCounter();
-  }
-
-  public decrease(): void {
-    this._counterService.decCounter();
+  public childData($event:any):void{
+    console.log($event)
   }
 }
