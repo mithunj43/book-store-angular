@@ -1,4 +1,3 @@
-<p>home works!</p>
-<p>Data from child without emitters = {{_testService.myData}}</p>
-<h2>Our authors</h2>
-<app-authors></app-authors>
+<p>home parent works!</p>
+<button (click)="counter()">Counter</button>
+<app-authors [data]="count" [data2]="test"></app-authors>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { __values } from 'tslib';
 import { TestService } from '../../services/test.service';
 
@@ -7,21 +7,17 @@ import { TestService } from '../../services/test.service';
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.scss']
 })
-export class AuthorsComponent implements OnInit{
+export class AuthorsComponent implements OnInit, OnChanges{
 
-  public data:number;
+  @Input() data:number;
+  @Input() data2:boolean;
 
-  public setData(value:number):void{
-    this.data = value;
+  constructor(){}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
   }
-
-  constructor(private _testService : TestService){}
 
   ngOnInit(): void {
   }
-
-  public btnClick():void{
-   this._testService.myData = 'This data is from my child - Mithun Pooja';
-  }
-
 }

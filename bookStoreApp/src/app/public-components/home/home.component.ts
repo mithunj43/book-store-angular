@@ -9,11 +9,19 @@ import { TestService } from 'src/app/shared/services/test.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
 
-  constructor(public _testService : TestService) { }
+  public count: number = 0;
+  public test: boolean = false;
+
+  constructor(public _testService: TestService) { }
 
   ngOnInit(): void {
 
+  }
+
+  public counter(): void {
+    this.count++;
+    this.test = !this.test;
   }
 }
