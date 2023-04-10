@@ -6,8 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./authors-address.component.scss']
 })
 export class AuthorsAddressComponent implements OnInit {
-
-  @Input() address:string;
+  
   ngOnInit(): void {
   }
 

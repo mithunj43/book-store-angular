@@ -1,58 +1,10 @@
-import { AfterViewChecked, AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatButton } from '@angular/material/button';
-import { AuthorsComponent } from 'src/app/shared/components/authors/authors.component';
-import { AuthorModel } from 'src/app/shared/models/authors.model';
-import { CounterService } from 'src/app/shared/services/counter.service';
-import { TestService } from 'src/app/shared/services/test.service';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
-  @ViewChild('btnCounter') btnCounter: ElementRef;
-  @ViewChild(AuthorsComponent) authComponent: AuthorsComponent
-  private time: any;
+export class HomeComponent {
 
-  public count: number = 0;
-  public test: boolean = false;
-  public address: string = 'India';
-  public obj: AuthorModel = { id: 2125, name: "PoojaMithun" }
-
-  constructor(public _testService: TestService) {
-    console.log('Hello from Parent constructor');
-  }
-
-  ngOnDestroy(): void {
-    clearInterval(this.time);
-    console.log('Home component destroyed');
-  }
-
-  ngAfterViewChecked(): void {
-    // console.log('ng after view checked', this.authComponent.childCounter);
-  }
-  ngAfterViewInit(): void {
-    //console.log(this.btnCounter);
-    this.btnCounter.nativeElement.innerHTML = 'Button text updated';
-  }
-
-  ngOnInit(): void {
-    console.log('Hello from Parent ngOn init');
-    this.timer();
-  }
-
-  public counter(): void {
-    this.count++;
-    this.test = !this.test;
-    this.obj.id = this.count;
-    this.address = this.address + this.count
-  }
-
-  timer(): void {
-    this.time = setInterval(() => {
-      this.count++;
-      console.log(this.count);
-    }, 1000);
-  }
-}
+ }
