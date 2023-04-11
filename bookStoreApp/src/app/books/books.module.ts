@@ -7,6 +7,8 @@ import { BooksComponent } from './books.component';
 import { SharedModule } from '../shared/shared.module';
 import { RecentBooksComponent } from './components/recent-books/recent-books.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -16,12 +18,14 @@ import { BookCardComponent } from './components/book-card/book-card.component';
     BookDetailsComponent,
     BooksComponent,
     RecentBooksComponent,
-    BookCardComponent
+    BookCardComponent,
+    AddBookComponent
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class BooksModule { }
