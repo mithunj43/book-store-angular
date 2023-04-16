@@ -24,6 +24,7 @@ export class AddBookComponent implements OnInit{
     book.price = {
       currency:'$',
       value:value.price};
+    book.isPublished = value.isPublished
     this._bookService.addBook(book);
   }
 }
