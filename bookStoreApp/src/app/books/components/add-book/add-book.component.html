@@ -33,6 +33,15 @@
         <mat-icon matSuffix>attach_money</mat-icon>
         <mat-hint>Hint</mat-hint>
       </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" name="publishedOn" ngModel>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
       <mat-slide-toggle class="toggle" name="isPublished" ngModel>Slide me!</mat-slide-toggle>
     <button type="submit" mat-raised-button color="primary">Save</button>
 </form>
