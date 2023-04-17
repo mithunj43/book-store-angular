@@ -1,4 +1,5 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { BookModel } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
 
@@ -8,6 +9,7 @@ import { BookService } from '../../services/book.service';
   styleUrls: ['./add-book.component.scss']
 })
 export class AddBookComponent implements OnInit {
+  @ViewChild('myForm') myForm: NgForm
   public model: BookModel;
   prices: any[] = [
     { value: 100, viewValue: '$ 100' },
@@ -31,15 +33,11 @@ export class AddBookComponent implements OnInit {
   saveBook(): void {
     console.log(this.model);
     // const book = new BookModel();
-    // book.title = value.title;
-    // book.author = value.author;
-    // book.totalPages = value.pages;
-    // book.price = {
-    //   currency: '$',
-    //   value: value.price
-    // };
-    // book.isPublished = value.isPublished;
-    // book.publishedOn = value.publishedOn;
-    this._bookService.addBook(this.model);
+    if (this.myForm.valid) {
+      this._bookService.addBook(this.model);
+    }
+    else {
+      alert('form invalid');
+    }
   }
 }
