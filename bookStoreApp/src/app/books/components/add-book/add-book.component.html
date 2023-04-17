@@ -4,23 +4,25 @@
 <form #myForm="ngForm" (ngSubmit)="saveBook()" class="add-book-form">
     <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
-        <input matInput name="title" placeholder="title" [(ngModel)]="model.title" required>
+        <input matInput name="title" placeholder="title" [(ngModel)]="model.title" required maxlength="10"
+            #bookTitle="ngModel">
         <mat-icon matSuffix>title</mat-icon>
-        <!-- <mat-hint>Hint</mat-hint> -->
+        <mat-hint [hidden]="bookTitle.valid">Please enter the book title</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Author</mat-label>
-        <input matInput name="author" placeholder="author" [(ngModel)]="model.author" required>
+        <input matInput name="author" placeholder="author" [(ngModel)]="model.author" required #author="ngModel">
         <mat-icon matSuffix>person</mat-icon>
-        <mat-hint>Hint</mat-hint>
+        <mat-hint [hidden]="author.valid">Please enter the author</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>No of Pages</mat-label>
-        <input matInput type="number" name="pages" placeholder="pages" [(ngModel)]="model.totalPages">
+        <input matInput type="number" name="pages" placeholder="pages" [(ngModel)]="model.totalPages" min="10"
+            max="1000" #nop="ngModel">
         <mat-icon matSuffix>123</mat-icon>
-        <mat-hint>Hint</mat-hint>
+        <mat-hint [hidden]="nop.valid">Valid length is 10 to 1000</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -29,10 +31,10 @@
         <mat-select name="price" placeholder="Price" [(ngModel)]="model.price.value">
             <mat-option *ngFor="let price of prices" [value]="price.value">
                 {{price.viewValue}}
-              </mat-option>
+            </mat-option>
         </mat-select>
         <mat-icon matSuffix>attach_money</mat-icon>
-        <mat-hint>Hint</mat-hint>
+        <!-- <mat-hint>Hint</mat-hint> -->
     </mat-form-field>
 
     <mat-form-field appearance="fill">
