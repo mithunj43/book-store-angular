@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BookService } from '../../services/book.service';
 
 @Component({
@@ -30,8 +30,8 @@ export class AddBookReactiveComponent implements OnInit {
 
   private initForm(): void {
     this.addBookForm = new FormGroup({
-      title: new FormControl(),
-      author: new FormControl(),
+      title: new FormControl('Mithun Pooja',[Validators.required, Validators.minLength(10)]),
+      author: new FormControl(null, Validators.required),
       totalPages: new FormControl(),
       price: new FormGroup({
         currency: new FormControl(),
