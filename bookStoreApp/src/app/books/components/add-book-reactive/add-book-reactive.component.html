@@ -1,4 +1,5 @@
 <h2>Add New Book using reactive</h2>
+<button (click)="updateFormValues()">Update Values</button>
 
 <form class="add-book-form" (ngSubmit)="saveBook()" [formGroup]="addBookForm">
     <mat-form-field appearance="fill">

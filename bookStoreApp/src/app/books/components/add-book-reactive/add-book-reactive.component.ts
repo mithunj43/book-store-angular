@@ -30,7 +30,7 @@ export class AddBookReactiveComponent implements OnInit {
 
   private initForm(): void {
     this.addBookForm = new FormGroup({
-      title: new FormControl('Mithun Pooja',[Validators.required, Validators.minLength(10)]),
+      title: new FormControl('Mithun',[Validators.required, Validators.minLength(10)]),
       author: new FormControl(null, Validators.required),
       totalPages: new FormControl(),
       price: new FormGroup({
@@ -39,6 +39,13 @@ export class AddBookReactiveComponent implements OnInit {
       }),
       publishedOn: new FormControl(),
       isPublished: new FormControl(),
+    });
+  }
+
+  updateFormValues():void{
+    this.addBookForm.patchValue({
+      title:'Mithun Pooja',
+      author:'default MiPoo'
     });
   }
 
