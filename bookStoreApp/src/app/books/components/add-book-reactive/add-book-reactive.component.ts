@@ -26,6 +26,8 @@ export class AddBookReactiveComponent implements OnInit {
   }
   ngOnInit(): void {
     this.initForm();
+    console.log(this.addBookForm.controls['title']);
+    console.log(this.addBookForm.get('title'));
   }
 
   private initForm(): void {
