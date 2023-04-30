@@ -66,6 +66,14 @@ export class AddBookReactiveComponent implements OnInit {
   public get authors(){
     return <FormArray>this.addBookForm.get('authors')
   }
+
+  public addMoreAuthor():void{
+    this.authors.push(this.getAuthorControl());
+  }
+
+  public removeAuthor(i:number):void{
+    this.authors.removeAt(i);
+  }
   private getAuthorControl(): FormGroup {
     return this._formBuilder.group({
       fullName: ''

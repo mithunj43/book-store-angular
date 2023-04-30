@@ -37,7 +37,9 @@
                     {{authorErrorMessage}}
                 </mat-hint>
             </mat-form-field>
+            <button mat-button (click)="removeAuthor(i)">Remove</button>
         </div>
+        <button (click)="addMoreAuthor()" mat-button>Add More</button>
     </div>
 
     <mat-form-field appearance="fill">
