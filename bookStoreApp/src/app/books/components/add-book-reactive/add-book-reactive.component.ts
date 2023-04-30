@@ -9,6 +9,8 @@ import { BookService } from '../../services/book.service';
 })
 export class AddBookReactiveComponent implements OnInit {
 
+  public titleErrorMessage: string;
+  public authorErrorMessage: string;
   prices: any[] = [
     { value: 100, viewValue: '100' },
     { value: 200, viewValue: '200' },
@@ -21,23 +23,25 @@ export class AddBookReactiveComponent implements OnInit {
 
   public addBookForm: FormGroup;
 
-  constructor(private _bookService:BookService) {
+  constructor(private _bookService: BookService) {
 
   }
   ngOnInit(): void {
     this.initForm();
-    // console.log(this.addBookForm.controls['title']);
-    // console.log(this.addBookForm.get('title'));
+    const titleControl = this.addBookForm.get('title');
+    titleControl?.valueChanges.subscribe(x => {
+      this.validateTitleControl(titleControl as FormControl);
+    });
 
-    const titleControl= this.addBookForm.get('title');
-    titleControl?.valueChanges.subscribe(x=>{
-      console.log(x);
+    const authorControl = this.addBookForm.get('author');
+    authorControl?.valueChanges.subscribe(x => {
+      this.validateAuthorControl(authorControl as FormControl);
     });
   }
 
   private initForm(): void {
     this.addBookForm = new FormGroup({
-      title: new FormControl('Mithun',[Validators.required, Validators.minLength(10)]),
+      title: new FormControl('Mithun', [Validators.required, Validators.minLength(15)]),
       author: new FormControl(null, Validators.required),
       totalPages: new FormControl(),
       price: new FormGroup({
@@ -49,10 +53,10 @@ export class AddBookReactiveComponent implements OnInit {
     });
   }
 
-  updateFormValues():void{
+  updateFormValues(): void {
     this.addBookForm.patchValue({
-      title:'Mithun Pooja',
-      author:'default MiPoo'
+      title: 'Mithun Pooja',
+      author: 'default MiPoo'
     });
   }
 
@@ -64,6 +68,27 @@ export class AddBookReactiveComponent implements OnInit {
     }
     else {
       alert('form invalid');
+    }
+  }
+
+  private validateTitleControl(titleControl: FormControl): void {
+    this.titleErrorMessage = '';
+    if (titleControl.errors && (titleControl.touched || titleControl.dirty)) {
+      if (titleControl.errors?.['required']) {
+        this.titleErrorMessage = 'This is a required field'
+      }
+      else if (titleControl.errors?.['minlength']) {
+        this.titleErrorMessage = 'Minimum length is '+titleControl.errors?.['minlength'].requiredLength;
+      }
+    }
+  }
+
+  private validateAuthorControl(authorControl: FormControl): void {
+    this.authorErrorMessage = '';
+    if (authorControl.errors && (authorControl.touched || authorControl.dirty)) {
+      if (authorControl.errors?.['required']) {
+        this.authorErrorMessage = 'This is a required field'
+      }
     }
   }
 
