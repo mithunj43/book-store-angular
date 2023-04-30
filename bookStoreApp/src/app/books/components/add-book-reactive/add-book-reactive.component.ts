@@ -28,6 +28,7 @@ export class AddBookReactiveComponent implements OnInit {
   }
   ngOnInit(): void {
     this.initForm();
+
     const titleControl = this.addBookForm.get('title');
     titleControl?.valueChanges.subscribe(x => {
       this.validateTitleControl(titleControl as FormControl);
@@ -36,6 +37,11 @@ export class AddBookReactiveComponent implements OnInit {
     const authorControl = this.addBookForm.get('author');
     authorControl?.valueChanges.subscribe(x => {
       this.validateAuthorControl(authorControl as FormControl);
+    });
+
+    const formatTypeControl = this.addBookForm.get('formatType');
+    formatTypeControl?.valueChanges.subscribe(x => {
+      this.formatTypeChanged(x);
     });
   }
 
@@ -50,6 +56,9 @@ export class AddBookReactiveComponent implements OnInit {
       }),
       publishedOn: new FormControl(),
       isPublished: new FormControl(),
+      formatType: new FormControl(),
+      pdfFormat: new FormControl(),
+      docFormat: new FormControl()
     });
   }
 
@@ -78,7 +87,7 @@ export class AddBookReactiveComponent implements OnInit {
         this.titleErrorMessage = 'This is a required field'
       }
       else if (titleControl.errors?.['minlength']) {
-        this.titleErrorMessage = 'Minimum length is '+titleControl.errors?.['minlength'].requiredLength;
+        this.titleErrorMessage = 'Minimum length is ' + titleControl.errors?.['minlength'].requiredLength;
       }
     }
   }
@@ -90,6 +99,22 @@ export class AddBookReactiveComponent implements OnInit {
         this.authorErrorMessage = 'This is a required field'
       }
     }
+  }
+
+  private formatTypeChanged(formatType: string): void {
+    const pdfControl = this.addBookForm.get('pdfFormat');
+    const docControl = this.addBookForm.get('docFormat');
+    if (formatType === "pdf") {
+      pdfControl?.addValidators([Validators.required,Validators.minLength(5)]);
+      docControl?.clearValidators();
+    }
+    else if (formatType === "doc") {
+      docControl?.addValidators(Validators.required);
+      pdfControl?.clearValidators();
+    }
+
+    pdfControl?.updateValueAndValidity();
+    docControl?.updateValueAndValidity();
   }
 
 }
